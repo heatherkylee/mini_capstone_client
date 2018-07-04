@@ -29,12 +29,14 @@ class Client::ProductsController < ApplicationController
     @product = response.body
     render "show.html.erb"
   end
+
   def edit
     product_id = params[:id]
     response = Unirest.get("http://localhost:3000/api/products/#{product_id}")
     @product = response.body
     render "edit.html.erb"
   end
+
   def update
     client_update_params = {
       input_name: params[:input_name],
@@ -46,5 +48,11 @@ class Client::ProductsController < ApplicationController
     response = Unirest.patch("http://localhost:3000/api/products/#{product_id}", parameters: client_update_params)
     @product = response.body
     render "show.html.erb"
+  end
+
+  def destroy
+    product_id = params[:id]
+    response = Unirest.delete("http://localhost:3000/api/products/#{product_id}")
+    render "destroy.html.erb"
   end
 end

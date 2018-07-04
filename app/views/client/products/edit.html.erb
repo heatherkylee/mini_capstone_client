@@ -15,4 +15,9 @@ Edit and existing product's information
   </div>
   <input type="submit" value="Update Product">
 <% end %>
+
+<%= form_tag "/client/products/#{@product['id']}", method: :delete do %>
+  <input type="submit" value="Delete Product">
+<% end %>
+
 <a href="http://localhost:3001/client/products/">Back to view all products</a>

@@ -1,0 +1,18 @@
+Edit and existing product's information
+
+<%= form_tag "/client/products/#{@product['id']}", method: :patch do %>
+  <div>
+    Product Name: <input type="text" name="input_name" value="<%= @product['name'] %>">
+  </div> 
+   <div>
+    Product Price: <input type="text" name="input_price" value="<%= @product['price'] %>">
+  </div>  
+  <div>
+    Product Description: <input type="text" name="input_description" value="<%= @product['description'] %>">
+  </div>  
+  <div>
+    Product Image: <input type="text" name="input_image" value="<%= @product['image'] %>">
+  </div>
+  <input type="submit" value="Update Product">
+<% end %>
+<a href="http://localhost:3001/client/products/">Back to view all products</a>

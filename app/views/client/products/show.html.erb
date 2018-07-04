@@ -5,3 +5,4 @@
 <p>price: <%= @product['price'] %></p>
 <p>description: <%= @product['description'] %></p>
 <p>image: <%= @product['image'] %></p>
+<p><a href="http://localhost:3001/client/products/<%= @product['id'].to_i - 1 %>">View previous product</a> | <a href="http://localhost:3001/client/products/<%= @product['id'].to_i + 1 %>">View next product</a> | <a href="http://localhost:3001/client/products/">View all products</a></p>

@@ -1,4 +1,4 @@
-Edit and existing product's information
+<p>Edit and existing product's information</p>
 
 <%= form_tag "/client/products/#{@product['id']}", method: :patch do %>
   <div>
@@ -16,8 +16,4 @@ Edit and existing product's information
   <input type="submit" value="Update Product">
 <% end %>
 
-<%= form_tag "/client/products/#{@product['id']}", method: :delete do %>
-  <input type="submit" value="Delete Product">
-<% end %>
-
-<a href="http://localhost:3001/client/products/">Back to view all products</a>
+<p><a href="/client/products/<%= @product['id'] %>" data-method="delete">Delete Product</a></p>

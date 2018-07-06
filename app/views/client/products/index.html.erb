@@ -1,3 +1,4 @@
+<a href="http://localhost:3001/client/products/new">Insert New Product</a>
 <% @products.each do |product| %>
   <p>name: <a href="/client/products/<%= product['id'] %>"><%= product['name'] %></a></p>
   <p>id: <%= product['id'] %></p>

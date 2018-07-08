@@ -27,6 +27,7 @@ class Client::ProductsController < ApplicationController
       }
     )
     @product = response.body
+    flash[:complete] = "New product has been added."
     redirect_to "/client/products/#{@product['id']}"
   end
 
@@ -47,12 +48,14 @@ class Client::ProductsController < ApplicationController
     product_id = params[:id]
     response = Unirest.patch("http://localhost:3000/api/products/#{product_id}", parameters: client_update_params)
     @product = response.body
+    flash[:complete] = "Product has been updated."
     redirect_to "/client/products/#{@product['id']}"
   end
 
   def destroy
     product_id = params[:id]
     response = Unirest.delete("http://localhost:3000/api/products/#{product_id}")
+    flash[:remove] = "Product has been removed."
     redirect_to "/client/products"
   end
 end

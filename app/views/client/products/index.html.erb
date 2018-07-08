@@ -1,7 +1,12 @@
-<a href="http://localhost:3001/client/products/new">Insert New Product</a>
+<p><a href="http://localhost:3001/client/products/new">Insert New Product</a></p>
 <% @products.each do |product| %>
   <p>name: <a href="/client/products/<%= product['id'] %>"><%= product['name'] %></a></p>
   <p>id: <%= product['id'] %></p>
+  <% if product['discounted'] == true %>
+  <p style="color:red;">Discounted item</p>
+  <% else %>
+  <p>Everyday value</p>
+  <% end %>
   <p>price: <%= product['price'] %></p>
   <p>description: <%= product['description'] %></p>
   <p>image: <%= product['image'] %></p>

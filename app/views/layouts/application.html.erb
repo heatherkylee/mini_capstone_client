@@ -10,7 +10,10 @@
   </head>
 
   <body>
-    <a href="http://localhost:3001/client/products/">Home</a>
+    <p><a href="http://localhost:3001/client/products/">Home</a></p>
+    <% flash.each do |name, message| %>
+      <%= message %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

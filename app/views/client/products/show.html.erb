@@ -1,6 +1,13 @@
 <p>id: <%= @product['id'] %></p>
 <p>name: <%= @product['name'] %></p>
+  <% if @product['discounted'] %>
+  <p>Discounted item</p>
+  <% else %>
+  <p>Everyday value</p>
+  <% end %>
 <p>price: <%= @product['price'] %></p>
+<p>tax: <%= @product['tax'] %></p>
+<p>product total: <%= @product['product_total'] %></p>
 <p>description: <%= @product['description'] %></p>
 <p>image: <%= @product['image'] %></p>
 <p><a href="http://localhost:3001/client/products/<%= @product['id']%>/edit">Edit Product</a></p>

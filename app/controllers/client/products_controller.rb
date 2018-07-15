@@ -28,7 +28,8 @@ class Client::ProductsController < ApplicationController
         input_name: params[:input_name],
         input_price: params[:input_price],
         input_description: params[:input_description],
-        input_image: params[:input_image]
+        input_image: params[:input_image],
+        supplier_id: params[:supplier_id]
       }
     )
     @product = response.body
@@ -48,7 +49,8 @@ class Client::ProductsController < ApplicationController
       input_name: params[:input_name],
       input_price: params[:input_price],
       input_description: params[:input_description],
-      input_image: params[:input_image]
+      input_image: params[:input_image],
+      supplier_id: params[:supplier_id]
     }
     product_id = params[:id]
     response = Unirest.patch("http://localhost:3000/api/products/#{product_id}", parameters: client_update_params)

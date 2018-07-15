@@ -1,15 +1,19 @@
-<p>id: <%= @product['id'] %></p>
-<p>name: <%= @product['name'] %></p>
-<p>SUPPLIER: <%= @product['supplier']['name'] %></p>
-  <% if @product['discounted'] %>
+<p>id: <%= @product["id"] %></p>
+<p>name: <%= @product["name"] %></p>
+<p>SUPPLIER: <%= @product["supplier"]["name"] %></p>
+<% if @product["discounted"] %>
   <p>Discounted item</p>
   <% else %>
   <p>Everyday value</p>
-  <% end %>
-<p>price: <%= @product['price'] %></p>
-<p>tax: <%= @product['tax'] %></p>
-<p>product total: <%= @product['product_total'] %></p>
-<p>description: <%= @product['description'] %></p>
-<p>image: <%= @product['image'] %></p>
+<% end %>
+<p>price: <%= @product["price"] %></p>
+<p>tax: <%= @product["tax"] %></p>
+<p>product total: <%= @product["product_total"] %></p>
+<p>description: <%= @product["description"] %></p>
+<p>image: <p>
+<!-- loop through array of images -->
+<% @product["images"].each do |image| %>
+  <img src="<%= image["url"] %>">
+<% end %>
 <p><a href="http://localhost:3001/client/products/<%= @product['id']%>/edit">Edit Product</a></p>
 <p><a href="http://localhost:3001/client/products/<%= @product['id'].to_i - 1 %>">View previous product</a> | <a href="http://localhost:3001/client/products/<%= @product['id'].to_i + 1 %>">View next product</a>

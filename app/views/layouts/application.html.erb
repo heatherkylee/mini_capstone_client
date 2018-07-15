@@ -10,7 +10,10 @@
   </head>
 
   <body>
-    <p><a href="http://localhost:3001/client/products/">Home</a></p>
+    <a href="http://localhost:3001/client/products/">Home</a>
+    <a href="/client/signup">Sign Up</a>
+    <a href="/client/login">Log In</a>
+    <a href="/client/logout" data-method="delete">Log Out</a>
     <% flash.each do |name, message| %>
       <%= message %>
     <% end %>

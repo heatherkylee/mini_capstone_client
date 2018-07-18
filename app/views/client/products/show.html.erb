@@ -1,6 +1,5 @@
 <p>id: <%= @product["id"] %></p>
 <p>name: <%= @product["name"] %></p>
-<p>SUPPLIER: <%= @product["supplier"]["name"] %></p>
 <% if @product["discounted"] %>
   <p>Discounted item</p>
   <% else %>
@@ -10,10 +9,15 @@
 <p>tax: <%= @product["tax"] %></p>
 <p>product total: <%= @product["product_total"] %></p>
 <p>description: <%= @product["description"] %></p>
-<p>image: <p>
+<!-- <p>image: <p> -->
 <!-- loop through array of images -->
-<% @product["images"].each do |image| %>
-  <img src="<%= image["url"] %>">
+
+<h2>Order Product</h2>
+<%= form_tag "/client/orders", method: :post do %>
+  <p>product: <input type= "text" name="product_id"></p>
+  <p>quantity: <input type= "text" name="quantity"></p>
+  <input type="submit" value="order here">
 <% end %>
+
 <p><a href="http://localhost:3001/client/products/<%= @product['id']%>/edit">Edit Product</a></p>
 <p><a href="http://localhost:3001/client/products/<%= @product['id'].to_i - 1 %>">View previous product</a> | <a href="http://localhost:3001/client/products/<%= @product['id'].to_i + 1 %>">View next product</a>

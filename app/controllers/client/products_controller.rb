@@ -4,7 +4,8 @@ class Client::ProductsController < ApplicationController
     user_input = params[:client_search]
     response = Unirest.get("http://localhost:3000/api/products",
       parameters: {
-        api_search: user_input
+        api_search: user_input,
+        category: params[:category]
       }
     )
     @products = response.body
@@ -53,8 +54,9 @@ class Client::ProductsController < ApplicationController
       supplier_id: params[:supplier_id]
     }
     product_id = params[:id]
+    p product_id
     response = Unirest.patch("http://localhost:3000/api/products/#{product_id}", parameters: client_update_params)
-    @product = response.body
+    p @product = response.body
     flash[:complete] = "Product has been updated."
     redirect_to "/client/products/#{@product['id']}"
   end

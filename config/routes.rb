@@ -11,10 +11,16 @@ Rails.application.routes.draw do
     patch "/products/:id" => "products#update"
     delete "/products/:id" => "products#destroy"
     
+    #USER CREATION
     get "/signup" => "users#new"
     post "/users" => "users#create"
     get "/login" => "sessions#new"
     post "/login" => "sessions#create"
     delete "/logout" => "sessions#destroy"
+
+    #ORDERS
+    # get "/orders/new" => "orders#new" - this was removed to make the app more user friendly (order is on the product page)
+    get "/orders/:id" => "orders#show"
+    post "/orders" => "orders#create"
   end
 end

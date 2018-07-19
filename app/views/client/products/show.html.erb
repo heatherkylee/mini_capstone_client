@@ -1,5 +1,6 @@
 <p>id: <%= @product["id"] %></p>
 <p>name: <%= @product["name"] %></p>
+<p>Supplier: <%= @product["supplier"]["name"] %></p>
 <% if @product["discounted"] %>
   <p>Discounted item</p>
   <% else %>
@@ -14,7 +15,7 @@
 
 <h2>Order Product</h2>
 <%= form_tag "/client/orders", method: :post do %>
-  <p>product: <input type= "text" name="product_id"></p>
+  <p>product: <input type= "text" name="product_id" value="<%= @product['id'] %>"></p>
   <p>quantity: <input type= "text" name="quantity"></p>
   <input type="submit" value="order here">
 <% end %>

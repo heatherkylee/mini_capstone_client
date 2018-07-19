@@ -8,6 +8,7 @@
 <% @products.each do |product| %>
   <p>name: <a href="/client/products/<%= product['id'] %>"><%= product['name'] %></a></p>
   <p>id: <%= product['id'] %></p>
+  <p>supplier <%= product['supplier']['name'] %></p>
   <% if product['discounted'] == true %>
   <p style="color:red;">Discounted item</p>
   <% else %>

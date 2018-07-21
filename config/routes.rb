@@ -22,5 +22,10 @@ Rails.application.routes.draw do
     # get "/orders/new" => "orders#new" - this was removed to make the app more user friendly (order is on the product page)
     get "/orders/:id" => "orders#show"
     post "/orders" => "orders#create"
+
+    #Carted_Product
+    get "/carted_products" => "carted_products#index"
+    get "/carted_products/new" => "carted_products#new"
+    post "/carted_products" => "carted_products#create"
   end
 end

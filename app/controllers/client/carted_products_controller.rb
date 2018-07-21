@@ -1,5 +1,9 @@
 class Client::CartedProductsController < ApplicationController
   # make new
+  def index
+    @carted_products = Unirest.get("http://localhost:3000/api/carted_products").body 
+    render "index.html.erb"
+  end
   def new
     render "new.html.erb"
   end
@@ -11,20 +15,8 @@ class Client::CartedProductsController < ApplicationController
         quantity: params[:quantity]
       }
     )
-    carted_product = response.body
-    p carted.product
-    redirect_to "/client/carted_products/#{}"
+    @carted_product = response.body
+    render "show.html.erb"
   end
 
 end
-
-  def create
-    response = Unirest.post("http://localhost:3000/api/orders", parameters: {
-      product_id: params[:product_id],
-      quantity: params[:quantity]
-      }
-    )
-    order = response.body
-    p order
-    redirect_to "/client/orders/#{order['order_id']}"
-  end

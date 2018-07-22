@@ -9,6 +9,13 @@
 <p>price: <%= @product["price"] %></p>
 <p>tax: <%= @product["tax"] %></p>
 <p>product total: <%= @product["product_total"] %></p>
+
+  <% @product["categories"].each do |category| %>
+    <p>categories:</p>
+  <ul>
+      <li><%= category["name"] %></li>
+  </ul>
+<% end %>
 <p>description: <%= @product["description"] %></p>
 <!-- <p>image: <p> -->
 <!-- loop through array of images -->

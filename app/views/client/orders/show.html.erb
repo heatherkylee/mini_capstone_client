@@ -1,7 +1,13 @@
+<h2>Order Summary</h2>
 <p>Order id: <%= @order['order_id'] %></p>
-<p>User id: <%= @order['user_id'] %></p>
-<p>Product id: <%= @order['product_id'] %></p>
-<p>Quantity: <%= @order['quantity'] %></p>
-<p>Subtotal: <%= @order['subtotal'] %></p>
-<p>Tax: <%= @order['tax'] %></p>
-<p>Total: <%= @order['total'] %></p>
+<p>Order Subtotal: <%= @order['subtotal'] %></p>
+<p>Order Tax: <%= @order['tax'] %></p>
+<p>Order Total: <%= @order['total'] %></p>
+
+
+<h2>Product Info:</h2>
+<% @order['carted_products'].each do |carted_product| %>
+  <p>Name: <%= carted_product['product']['name'] %>
+  <p>Quantity: <%= carted_product['quantity'] %>
+  <p>Price: <%= carted_product['product']['price'] %>
+<% end %>

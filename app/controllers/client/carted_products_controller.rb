@@ -1,9 +1,11 @@
 class Client::CartedProductsController < ApplicationController
   # make new
   def index
-    @carted_products = Unirest.get("http://localhost:3000/api/carted_products").body 
+    response = Unirest.get("http://localhost:3000/api/carted_products")
+    @carted_products = response.body
     render "index.html.erb"
   end
+
   def new
     render "new.html.erb"
   end
@@ -16,7 +18,7 @@ class Client::CartedProductsController < ApplicationController
       }
     )
     @carted_product = response.body
-    render "show.html.erb"
+    redirect_to "/client/carted_products"
   end
 
 end

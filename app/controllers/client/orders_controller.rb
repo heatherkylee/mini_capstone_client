@@ -12,13 +12,8 @@ class Client::OrdersController < ApplicationController
   # end
   #make create action
   def create
-    response = Unirest.post("http://localhost:3000/api/orders", parameters: {
-      product_id: params[:product_id],
-      quantity: params[:quantity]
-      }
-    )
+    response = Unirest.post("http://localhost:3000/api/orders")
     order = response.body
-    p order
     redirect_to "/client/orders/#{order['order_id']}"
   end
 end

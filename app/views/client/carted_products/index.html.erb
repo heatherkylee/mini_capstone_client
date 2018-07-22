@@ -1,1 +1,10 @@
-<p>Test<%= @carted_products %></p>
+<h2> Items in Your Cart </h2>
+<p><% @carted_products.each do |carted_product| %></p>
+  <p><%= carted_product["id"] %></p>
+  <p>Product Name: <%= carted_product["product"]["name"] %></p>
+  <p>Quantity: <%= carted_product["quantity"] %></p>
+  <p>Price: <%= carted_product["product"]["price"] %></p>
+<% end %>
+
+<!-- allow users to buy/order items -->
+<a href="/client/orders" data-method="post">Order Items in Cart</a>

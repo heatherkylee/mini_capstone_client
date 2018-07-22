@@ -23,11 +23,11 @@
   <p>Image: <img src="<%= image["url"] %>"></p>
 <% end %>
 
-<h2>Order Product</h2>
-<%= form_tag "/client/orders", method: :post do %>
-  <p>product: <input type= "text" name="product_id" value="<%= @product['id'] %>"></p>
+<h2>Add Item to Cart</h2>
+<%= form_tag "/client/carted_products", method: :post do %>
+  <p>product: <input type= "text" name="product_id" value= <%= @product['id'] %> ></p>
   <p>quantity: <input type= "text" name="quantity"></p>
-  <input type="submit" value="order here">
+  <input type="submit" value="add item to cart">
 <% end %>
 
 <p><a href="http://localhost:3001/client/products/<%= @product['id']%>/edit">Edit Product</a></p>

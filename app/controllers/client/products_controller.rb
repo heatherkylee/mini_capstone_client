@@ -20,22 +20,30 @@ class Client::ProductsController < ApplicationController
   end
 
   def new
+    @product1 = {}
     render "new.html.erb"
   end
 
   def create
-    response = Unirest.post("http://localhost:3000/api/products", parameters:
-      {
+    @product1 = {
         input_name: params[:input_name],
         input_price: params[:input_price],
         input_description: params[:input_description],
         input_image: params[:input_image],
         supplier_id: params[:supplier_id]
       }
+    response = Unirest.post("http://localhost:3000/api/products", parameters:
+      @product1
     )
     @product = response.body
-    flash[:complete] = "New product has been added."
-    redirect_to "/client/products/#{@product['id']}"
+
+    if response.code == 200
+      flash[:complete] = "New product has been added."
+      redirect_to "/client/products/#{@product['id']}"
+    else
+      @errors = response.body['errors']
+      render 'new.html.erb'
+    end
   end
 
   def edit

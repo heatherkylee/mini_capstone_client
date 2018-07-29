@@ -1,21 +1,31 @@
-<p><a href="http://localhost:3001/client/products/new">Insert New Product</a></p>
-
 <p><%= form_tag "/client/products", method: :get do %></p>
   <input type="text" name="client_search">
   <input type="submit" value="Search">
 <% end %>
 
-<% @products.each do |product| %>
-  <p>name: <a href="/client/products/<%= product['id'] %>"><%= product['name'] %></a></p>
-  <p>id: <%= product['id'] %></p>
-  <p>supplier <%= product['supplier']['name'] %></p>
-  <% if product['discounted'] == true %>
-  <p style="color:red;">Discounted item</p>
-  <% else %>
-  <p>Everyday value</p>
-  <% end %>
-  <p>price: <%= product['price'] %></p>
-  <p>description: <%= product['description'] %></p>
-  <p>image: <%= product['image'] %></p>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-sm-4">
+      <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= product['name'] %></h5>
+          <p class="card-text"><%= product['description'] %></p>
+          <p>id: <%= product['id'] %></p>
+          <p>supplier <%= product['supplier']['name'] %></p>
+          <% if product['discounted'] == true %>
+          <p style="color:red;">Discounted item</p>
+          <% else %>
+          <p>Everyday value</p>
+          <% end %>
+          <p>price: <%= product['price'] %></p>
+          <% product['images'].each do |image| %>
+            <p>Image: <img src="<%= image["url"] %>"></p>
+          <% end %>
+          <a href="/client/products/<%= product['id'] %>" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+   </div>   
   <hr>
-<% end %>
+  <% end %>
+</div>

@@ -19,8 +19,10 @@
           <p>Everyday value</p>
           <% end %>
           <p>price: <%= product['price'] %></p>
-          <% product['images'].each do |image| %>
-            <p>Image: <img src="<%= image["url"] %>"></p>
+          <% product['images'].each_with_index do |image, index| %>
+            <% if index == 0 %>
+              <p>Image: <img style="width: 50px" src="<%= image["url"] %>"></p>
+            <% end %>
           <% end %>
           <a href="/client/products/<%= product['id'] %>" class="btn btn-primary">Go somewhere</a>
         </div>
